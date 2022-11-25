@@ -1,0 +1,35 @@
+{
+  "name": "kacha_dula",
+  "version": "1.0.0",
+  "description": "Kacha_dula a mini social media platform to share ideas views on any issues of concern",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2raymoori/kacha_dula.git"
+  },
+  "keywords": [
+    "kacha",
+    "Jorko",
+    "wakhtan"
+  ],
+  "author": "Lot",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/2raymoori/kacha_dula/issues"
+  },
+  "homepage": "https://github.com/2raymoori/kacha_dula#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "concurrently": "^7.6.0",
+    "config": "^3.3.8",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.3",
+    "nodemon": "^2.0.20"
+  }
+}
