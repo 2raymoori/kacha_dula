@@ -5,7 +5,7 @@ const dbHandle = async () => {
   try {
     // Trying a connection to db
     await mongoose.connect(dbUrl);
-    console.log("Server Successfully Conected..");
+    console.log("Server Successfully Conected...");
   } catch (error) {
     // respond to errors incase.
     console.log("sorry There existes an error in the server connnection.");
