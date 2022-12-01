@@ -1,6 +1,7 @@
 const express = require("express");
 const PORT = 3001;
 const config = require("config");
+const cors = require('cors');
 // GET CONNECTION TO MONGO DB.
 const { dbHandle } = require("./config/db");
 const authenticate = require("./src/MiddleWare/Auth");
@@ -9,6 +10,7 @@ const Router = require("./src/Router/User.Route");
 
 // INIT THE SERVER HANDLE
 const app = express();
+app.use(express.json());
 // INIT THE CONNECTION TO DB.
 dbHandle();
 
