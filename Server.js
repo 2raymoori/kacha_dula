@@ -1,7 +1,7 @@
 const express = require("express");
-const PORT = 3001;
+const PORT = 3000;
 const config = require("config");
-const cors = require('cors');
+const cors = require("cors");
 // GET CONNECTION TO MONGO DB.
 const { dbHandle } = require("./config/db");
 const authenticate = require("./src/MiddleWare/Auth");
@@ -14,14 +14,14 @@ app.use(express.json());
 // INIT THE CONNECTION TO DB.
 dbHandle();
 
-app.get('/',[authenticate],(req,res)=>{
-  console.log('a request just came in');
+app.get("/", [authenticate], (req, res) => {
+  console.log("a request just came in");
   return res.status(200).json({
-    status:"Success",
-    data:[{msg:"Good so far so good...."}]
-  })
+    status: "Success",
+    data: [{ msg: "Good so far so good...." }],
+  });
 });
-app.use('/api/user',Router);
+app.use("/api/user", Router);
 
 app.listen(PORT, () => {
   console.log(`Server Listening on port ${PORT}`);

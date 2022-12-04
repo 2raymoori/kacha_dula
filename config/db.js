@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const config = require("config");
-const dbUrl = config.get("dbConnString");
+// const dbUrl = config.get("dbConnString");
+const dbUrl = "mongodb://127.0.0.1:27017/kacha_dula";
 const dbHandle = async () => {
   try {
     // Trying a connection to db
