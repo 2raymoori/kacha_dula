@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const config = require('config');
 
 const authenticate = (req,res,next)=>{
     // fetch the token from the request header
@@ -12,7 +13,12 @@ const authenticate = (req,res,next)=>{
     }else{
         try{
             // validate the token
-            const decode = jwt.verify(token,'password')
+            const decode = jwt.verify(token,config.get('privateKey'));
+            // const payload = {
+            //     id:userId,
+            //     email:userEmail,
+            //     name:`${fName} ${lName}`
+            // }
             req.user = {
                 email:decode.email,
                 id:decode.id
@@ -28,3 +34,8 @@ const authenticate = (req,res,next)=>{
 }
 
 module.exports = authenticate;
+/*
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzOGUxOGIzNTA3YTEwMWIwYzZjOGYyNyIsImVtYWlsIjoibW9vcmlAZ21haWwuY29tIiwibmFtZSI6IkZhYXRvdSBPLiBOamllIiwiaWF0IjoxNjcwMjU2ODE5LCJleHAiOjE2NzAyNjQwMTl9.ASpzM2rkumEhSRELCHf8qphQd_RoCzSORRSnrRSHFzY
+
+*/

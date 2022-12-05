@@ -10,7 +10,7 @@ const Schema = new mongoose.Schema({
     default: "defImg",
   },
   gender: {
-    type: Integer,
+    type: Number,
     require: true,
   },
   nationality: {
@@ -18,7 +18,7 @@ const Schema = new mongoose.Schema({
     require: true,
   },
   status: {
-    type: Integer,
+    type: Number,
   },
   pno: {
     type: String,
