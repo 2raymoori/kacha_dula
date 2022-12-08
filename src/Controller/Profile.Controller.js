@@ -4,11 +4,19 @@ const profileSchema = require('../Model/Profile.Model');
 const addProfile=async(req,res)=>{
     try {
         console.log('#############################################################');
-        console.log(req)
+        
         if(req.files){
             const img  = req.files.pImage;
             const fExtension = img.name.split(".")[img.name.split(".").length-1];
-            img.mv(`./ProfileImgs/lot.${fExtension}`);
+            //img.mv(`./ProfileImgs/lot.${fExtension}`);
+        }
+        const {gender,nationality,pno} = req.body;
+        const searchUserProfile = profileSchema.find();
+        console.log(searchUserProfile);
+        if(searchUserProfile){
+            console.log("There exists a user in the system with this profile.");
+        }else{
+            console.log("No profile associated with this id. Go ahead and add...");
         }
         console.log('#############################################################');
     } catch (error) {
