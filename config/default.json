@@ -1,8 +1,3 @@
 {
-    "dbConnStringOld":"mongodb://192.168.0.3:27017/kacha_dula",
-    "dbConnStringdol":"mongodb+srv://lot:4472897@cluster0.kgxx6se.mongodb.net/?retryWrites=true&w=majority",
-    "dbConnString":"mongodb+srv://boynjie:3830021njieS@kachacluster.llvbsbk.mongodb.net/?retryWrites=true&w=majority",
-    "hashPasswordKey":10,
-    "privateKey":"3830021_9830021",
-    "tokenValidLen":"360000"
+
 }
