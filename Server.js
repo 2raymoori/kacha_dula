@@ -9,6 +9,8 @@ const { dbHandle } = require("./config/db");
 const authenticate = require("./src/MiddleWare/Auth");
 const UserRouter = require("./src/Router/User.Route");
 const ProfileRouter = require('./src/Router/Profile.Route');
+const Router = require("./src/Router/Auth.Route");
+const postRouter = require('./src/Router/Post.Route')
 // const userSchema = require("./src/Model/User.Model");
 
 // INIT THE SERVER HANDLE
@@ -31,7 +33,9 @@ app.get("/", [authenticate], (req, res) => {
   });
 });
 app.use("/api/user", UserRouter);
-app.use('/api/profile',ProfileRouter)
+app.use('/api/profile',ProfileRouter);
+app.use('/api/auth',Router);
+app.use('/api/post',postRouter);
 
 app.listen(PORT, () => {
   console.log(`Server Listening on port ${PORT}`);

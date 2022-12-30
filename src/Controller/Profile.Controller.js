@@ -4,7 +4,6 @@ const profileSchema = require('../Model/Profile.Model');
 const addProfile=async(req,res)=>{
     try {
         console.log('#############################################################');
-       
         const searchUserProfile = await profileSchema.find();
         console.log(searchUserProfile);
         if(searchUserProfile.length >0){   
@@ -31,14 +30,11 @@ const addProfile=async(req,res)=>{
             newProfile.nationality = nationality;
             newProfile.status = 1;
             newProfile.friends = [];
-
             await newProfile.save();
             return res.status(200).json({
               status: "Success",
               msg: { info: "Profile Successfully Saved", data: newProfile },
             });
-
-
             console.log("No profile associated with this id. Go ahead and add...");
         }
         console.log('#############################################################');
@@ -50,7 +46,6 @@ const addProfile=async(req,res)=>{
         });
         
     }
-
 }
 const profile=async(req,res)=>{
     try {
