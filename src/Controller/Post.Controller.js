@@ -101,8 +101,17 @@ const modifyPost = async(req,res)=>{
     msg: { info: "Sorry There exittss an error in the server" },
   });
   
-}}
-const deletePost = async(req,res)=>{}
+}
+}
+const deletePost = async(req,res)=>{
+  try {
+    const postId = req.params.id;
+    const uId = "6392502e54dd21f8dc202633";// req.user.id;
+    console.log(postId);
+  } catch (error) {
+    
+  }
+}
 const allPost = async(req,res)=>{}
 const getPost = async(req,res)=>{}
 const likePost = async(req,res)=>{}
