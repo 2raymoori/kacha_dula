@@ -10,6 +10,7 @@ const dbHandle = async () => {
   } catch (error) {
     // respond to errors incase.
     console.log("sorry There existes an error in the server connnection.");
+    console.log(error)
   }
 };
 module.exports = {
