@@ -1,6 +1,7 @@
 const PostSchema = require('../Model/Post.Model');
 const { validationResult } = require("express-validator");
 const PostModel = require('../Model/Post.Model');
+const { find } = require('../Model/Post.Model');
 const addPost = async(req,res)=>{
     try {
         const err = validationResult(req).errors;
@@ -164,8 +165,72 @@ const getPost = async(req,res)=>{
     });
   }
 }
-const likePost = async(req,res)=>{}
-const disLikePost = async(req,res)=>{}
+const likePost = async(req,res)=>{
+  try {
+    const userId = "6391ea8dac08fb6e051c2ab2";
+    const postId = req.params.postid;
+    const postToComment = await PostModel.findById(postId);
+    if(postToComment){
+      let flag = false;
+      for(let tracker = 0; tracker <postToComment.likes.length; tracker++){
+        if(postToComment.likes[tracker].id ===userId){
+          flag = true;
+          break;
+        }
+      }
+
+    if(!flag){
+      postToComment.likes.push(userId);
+      await postToComment.save();
+      return res.status(200).json({"status":"Success","msg":"Post successfully Commented"});
+    }else{
+      return res.status(201).json({"status":"Error","msg":"User already liked the post"});
+    }
+    }else{
+      return res.status(201).json({"status":"Error","msg":"Sorry No such post in the system."});
+    }
+  }  catch (error) {
+    return res.status(500).json({
+      status: "Error",
+      msg: { info: "Sorry There exittss an error in the server" },
+    });
+  }
+}
+const disLikePost = async(req,res)=>{
+  try {
+    console.log("Deleting a post like...");
+    const userId = "6392502e54dd21f8dc202633";
+    const postId = req.params.postid;
+    const postToComment = await PostModel.findById(postId);
+    if(postToComment){
+      let flag = false;
+      let idPosToRemove = -1;
+      for(let tracker = 0; tracker <postToComment.likes.length; tracker++){
+        if(postToComment.likes[tracker].id ===userId){
+          flag = true;
+          idPosToRemove = tracker;
+          break;
+        }
+      }
+
+    if(flag){
+      postToComment.likes.splice(idPosToRemove,1);
+      await postToComment.save();
+      return res.status(200).json({"status":"Success","msg":"Post Like successfully Deleted"});
+    }else{
+      return res.status(201).json({"status":"Error","msg":"User didn't like the post yet"});
+    }
+    }else{
+      return res.status(201).json({"status":"Error","msg":"Sorry No such post in the system."});
+    }
+  }  catch (error) {
+    return res.status(500).json({
+      status: "Error",
+      msg: { info: "Sorry There exittss an error in the server" },
+    });
+  }
+
+}
 module.exports = {
     addPost,
     modifyPost,

@@ -8,7 +8,7 @@ Router.get("/all",allPost);
 Router.get("/:id",getPost);
 Router.delete("/:id",deletePost);
 Router.put("/:id",modifyPost);
-Router.put("/:id",likePost);
-Router.put("/:id",disLikePost);
+Router.put("/like/:postid",likePost);
+Router.put("/delete/:postid",disLikePost);
 
 module.exports = Router; 

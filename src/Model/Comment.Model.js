@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = new mongoose.Schema({
-  profile: {
+  user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "profiles",
+    ref: "users",
   },
   post: {
     type: mongoose.Schema.Types.ObjectId,
@@ -14,21 +14,21 @@ const Schema = new mongoose.Schema({
   },
   likes: [
     {
-      profile: {
+      user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "profiles",
+        ref: "users",
       },
     },
   ],
   dislikes: [
     {
-      profile: {
+      user: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "profiles",
+        ref: "users",
       },
     },
   ],
-  postDate: {
+  commentDate: {
     type: Date,
     default: Date.now,
   },

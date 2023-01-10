@@ -11,6 +11,7 @@ const UserRouter = require("./src/Router/User.Route");
 const ProfileRouter = require('./src/Router/Profile.Route');
 const Router = require("./src/Router/Auth.Route");
 const postRouter = require('./src/Router/Post.Route')
+const commentRouter = require('./src/Router/Comment.Route')
 // const userSchema = require("./src/Model/User.Model");
 
 // INIT THE SERVER HANDLE
@@ -36,6 +37,7 @@ app.use("/api/user", UserRouter);
 app.use('/api/profile',ProfileRouter);
 app.use('/api/auth',Router);
 app.use('/api/post',postRouter);
+app.use('/api/comment',commentRouter);
 
 app.listen(PORT, () => {
   console.log(`Server Listening on port ${PORT}`);
